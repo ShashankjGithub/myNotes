@@ -4,7 +4,7 @@ const InputForm = () => {
   return (
     <div className="my-3">
       <div className="mb-3">
-        <label for="title" className="form-label">
+        <label htmlFor="title" className="form-label">
           Title
         </label>
         <input
@@ -15,7 +15,7 @@ const InputForm = () => {
         />
       </div>
       <div className="mb-3">
-        <label for="descrption" className="form-label">
+        <label htmlFor="descrption" className="form-label">
           Description
         </label>
         <textarea
@@ -25,7 +25,7 @@ const InputForm = () => {
           placeholder="Enter Your Note Description"
         ></textarea>
       </div>
-      <button type="button" class="btn btn-primary">Add</button>
+      <button type="button" className="btn btn-primary">Add</button>
     </div>
   );
 };

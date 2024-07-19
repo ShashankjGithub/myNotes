@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import InputForm from './InputForm'
-import notesContext from '../context/NotesContext'
+
+import Notes from './Notes'
 
 
 
 const Home = () => {
-  const context = useContext(notesContext)
-  const {notes,setnotes} = context;
+
   
   return (
      <>
@@ -15,14 +15,8 @@ const Home = () => {
           <span className="text-danger">Welcome to</span> My Notes
         </h3>
         <InputForm/>
-        <h3>
-          Your Notes
-        </h3>
-        {
-          notes.map((note)=>{
-            return note.title;
-          })
-        }
+       
+        <Notes/>
       </div>
      </>
   )

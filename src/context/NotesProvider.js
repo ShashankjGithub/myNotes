@@ -21,6 +21,7 @@ const NoteState = (props) => {
           "date": "2024-07-16T03:31:26.574Z",
           "__v": 0
         }
+        
       ]
     const [notes, setnotes] = useState(defaultNotes)
     return (
