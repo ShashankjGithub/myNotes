@@ -3,10 +3,10 @@ import notesContext from "../context/NotesContext";
 
 const InputForm = () => {
   const context = useContext(notesContext);
-  const { addNote} = context;
+  const { addNote } = context;
 
-  const [note, setNote] = useState({title:"",descrption :""})
-  const handelAddNote = () =>{
+  const [note, setNote] = useState({title:"",description :""})
+  const handelAddNote = () => {
     addNote(note)
   }
 
@@ -32,15 +32,15 @@ const InputForm = () => {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="descrption" className="form-label">
+        <label htmlFor="description" className="form-label">
           Description
         </label>
         <textarea
           className="form-control"
-          id="descrption"
+          id="description"
           rows="3"
-          name="descrption"
-          placeholder="Enter Your Note Description"
+          name="description"
+          placeholder="Enter Your Note description"
           onChange={handelOnChange}
         ></textarea>
       </div>
