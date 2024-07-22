@@ -13,7 +13,7 @@ const NoteState = (props) => {
         method: methord,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY4YTNlNmRiOWI5MjFhOGYyMmE3YzkzIn0sImlhdCI6MTcyMDMzNjg0OH0.92M9LxQi8DWGn25BDEllRN9Xf3uRW4Lv2RzccQOuJ1U"
+          "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY4YjZlN2NjZTY4MTg0ODRkYWQyOWU3In0sImlhdCI6MTcyMTYyNDE4Nn0.vw6ezpQOs2-d_F95CI7TK-Cfr1wzsxzspxSEo15cnck"
           },
           body: JSON.stringify(data)
          
@@ -38,13 +38,6 @@ const NoteState = (props) => {
      }
 
 
-
-
-
-
-
-
-
     /// Add a Note 
      const addNote = async(note) => {
        note.tag = "Gernal"
@@ -62,8 +55,8 @@ const NoteState = (props) => {
     /// Edit A Notes
 
     const updateNoteData = async(id , note) => {
-      const json = await apiCall("POST",`updateNote/${id}`,note)
-      setNotes(json)
+      const json = await apiCall("PUT",`updateNote/${id}`,note)
+      setNotes(json.data)
 
     }
 

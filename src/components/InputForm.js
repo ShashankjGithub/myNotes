@@ -6,8 +6,11 @@ const InputForm = () => {
   const { addNote } = context;
 
   const [note, setNote] = useState({title:"",description :""})
-  const handelAddNote = () => {
-    addNote(note)
+  const handelAddNote = async() => {
+   await addNote(note)
+   setNote({title:"",description :""})
+
+
   }
 
   const handelOnChange = (e) => {
@@ -27,8 +30,11 @@ const InputForm = () => {
           className="form-control"
           id="title"
           name="title"
+          value={note.title}
           placeholder="Enter Your Note Title"
           onChange={handelOnChange}
+          minLength={2}
+          required
         />
       </div>
       <div className="mb-3">
@@ -38,13 +44,17 @@ const InputForm = () => {
         <textarea
           className="form-control"
           id="description"
-          rows="3"
+          value={note.description}
           name="description"
           placeholder="Enter Your Note description"
           onChange={handelOnChange}
+          minLength={5}
+          required
         ></textarea>
       </div>
-      <button type="button" className="btn btn-primary" onClick={handelAddNote}>Add Note</button>
+      <button 
+      disabled = {note.title.length < 5 || note.description.length < 5}
+      type="button" className="btn btn-primary" onClick={handelAddNote}>Add Note</button>
     </div>
   );
 };

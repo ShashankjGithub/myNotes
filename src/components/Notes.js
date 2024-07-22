@@ -4,7 +4,7 @@ import NoteItem from "./NoteItem";
 const Notes = () => {
   const context = useContext(notesContext);
   const { notes, getAllNotes,updateNoteData } = context;
-  const [note, setNote] = useState({etitle:"",edescription :""})
+  const [note, setNote] = useState({id:"",etitle:"",edescription :""})
   useEffect(() => {
     getAllNotes();
     // eslint-disable-next-line
@@ -14,6 +14,7 @@ const Notes = () => {
 
   const updateNote = (currentNote) =>{
      setNote({
+      id:currentNote._id,
       etitle:currentNote.title,
       edescription:currentNote.description
       })
@@ -25,8 +26,14 @@ const Notes = () => {
   }
 
   const handelUpdateNote = () => {
-    console.log(note._id)
-   // updateNoteData(note._id,note)
+    console.log(note)
+   
+    updateNoteData(note.id,
+      {
+        "title":note.etitle,
+        "description":note.edescription
+      }
+    )
   }
 
 
@@ -88,7 +95,9 @@ const Notes = () => {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={handelUpdateNote}>
+              <button 
+                 data-bs-dismiss="modal"
+              type="button" className="btn btn-primary" onClick={handelUpdateNote}>
                 Save
               </button>
             </div>
@@ -97,6 +106,11 @@ const Notes = () => {
       </div>
       <div className="row">
         <h3>Your Notes</h3>
+        <div className="container mt-3 ml">
+          {
+            notes.length === 0 && "No Notes Found Please Add Note"
+          }
+        </div>
         {notes.map((note) => {
           return <NoteItem note={note} key={note._id} updateNoteProps = {updateNote}/>;
         })}
