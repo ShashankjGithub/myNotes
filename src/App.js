@@ -11,6 +11,7 @@ import {
 import Home from './components/Home';
 import About from './components/About';
 import NoteState from './context/NotesProvider';
+import SignUp from './components/SignUp';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/about" element={<About />} />
+        <Route exact path='/signup' element={<SignUp/>}/>
       </Routes>
       </div>
     
