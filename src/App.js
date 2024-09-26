@@ -12,12 +12,14 @@ import Home from './components/Home';
 import About from './components/About';
 import NoteState from './context/NotesProvider';
 import SignUp from './components/SignUp';
+import ShowAlertState from './context/ShowAlertProvider';
 
 function App() {
 
   return (
     <>
     <NoteState>
+      <ShowAlertState>
     <Router>
       <NavBar/>
       <div className="container">
@@ -32,6 +34,7 @@ function App() {
     
 
     </Router>
+    </ShowAlertState>
     </NoteState>
  
       </>

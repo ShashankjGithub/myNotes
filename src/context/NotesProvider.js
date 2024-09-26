@@ -19,6 +19,10 @@ const NoteState = (props) => {
          
       })
       const json = await response.json();
+      if(response.status == 401){
+        alert('Invalide Tocken please login')
+        return null;
+      }
       return json;
 
     }
@@ -42,7 +46,10 @@ const NoteState = (props) => {
      const addNote = async(note) => {
        note.tag = "Gernal"
        const json = await apiCall("POST","addNote",note)
-       setNotes(notes.concat(json))
+       if(json!=null){
+        setNotes(notes.concat(json))
+       }
+       
      }
     /// Delete a Note
 

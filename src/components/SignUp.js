@@ -1,6 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext,useState} from 'react'
 import { json, useNavigate } from 'react-router-dom';
+import showAlertContext from '../context/ShowAlertContext';
+import Alert from './Alert'
 function SignUp() {
+    const context = useContext(showAlertContext);
+    const { showAlert , alert} = context;
     let navigate = useNavigate();
     const [creditation, setcreditation] = useState({
         email: '',
@@ -27,14 +31,18 @@ function SignUp() {
           localStorage.setItem('token', data.token)
           navigate('/')
           }else{
-            alert('Invalid email or password')
+            showAlertt(`${data.error}`)
           }
 
 
     }
 
-
+    const showAlertt = (message) => {
+        showAlert(message,'danger')
+      }
     return (
+       <>
+         <Alert alert = {alert}/>
         <div className='container mt-3'>
             <h1 className='mb-2' style={{fontSize : "30px"}}>Sign Up</h1>
             <form onSubmit={handelCreateAccount}>
@@ -50,12 +58,13 @@ function SignUp() {
                 </div>
                 <div class="mb-3">
                     <label htmlFor="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name='password' onChange={onChange} />
+                    <input type="password" class="form-control" id="password" name='password' onChange={onChange} minLength={5} required/>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+       </>
     )
 }
 

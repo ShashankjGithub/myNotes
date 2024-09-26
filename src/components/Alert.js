@@ -1,10 +1,14 @@
 import React from 'react'
 
-const Alert = () => {
+function Alert(props) {
   return (
-    <div>
-         
+   props.alert && <div className="container mt">
+    <div className='mt-2'>
+        <div className={`alert alert-${props.alert.type}`} role="alert" >
+            {props.alert.msg}
+        </div>
     </div>
+   </div>
   )
 }
 

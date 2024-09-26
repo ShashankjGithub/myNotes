@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext,useState } from 'react'
 
 import { json, useNavigate } from 'react-router-dom';
-
+import showAlertContext from '../context/ShowAlertContext';
+import Alert from './Alert'
 const background = require('../bg.jpg')
 
 
 
 
-export default function Login() {
+const Login = () => {
+
+  const context = useContext(showAlertContext);
+  const { showAlert , alert} = context;
+
   let navigate = useNavigate();
   const [creditation, setCreditation] = useState({
     email: '',
@@ -32,12 +37,19 @@ export default function Login() {
     if(data.success){
       localStorage.setItem('token', data.token)
       navigate('/')
+      showAlertt("Login Success",'success')
       }else{
-        alert('Invalid email or password')
+        showAlertt()
       }
   }
 
+  const showAlertt = () => {
+    showAlert('Invalid email or password','danger')
+  }
+
   return (
+    <>
+     <Alert alert = {alert}/>
     <form onSubmit = {handelSubmit}>
       <div className="container my-3" >
         <div className="mb-3">
@@ -54,6 +66,9 @@ export default function Login() {
 
       </div>
     </form>
+    </>
+    
   )
 }
 
+export default Login;
